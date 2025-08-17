@@ -5,8 +5,9 @@ import Constants from 'expo-constants';
 const animals = ['Cat', 'Dog', 'Rabbit', 'Elephant', 'Lion', 'Tiger', 'Bear', 'Giraffe'];
 
 export default function App() {
-  const [animalPair, setAnimalPair] = useState([null, null]);
-  const [attribute, setAttribute] = useState('cuteness');
+  cconst [animalPair, setAnimalPair] = useState([null, null]);
+const [attribute, setAttribute] = useState('cuteness');
+const [votes, setVotes] = useState([]);
 
   useEffect(() => {
     generateRandomPair();
@@ -21,17 +22,17 @@ export default function App() {
     setAnimalPair([first, second]);
   };
 
-  const submitVote = async (selected) => {
-    try {
-      await fetch('http://localhost:3001/api/vote', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          first: animalPair[0],
-          second: animalPair[1],
-          selected,
-          attribute
-        })
+  const submitVote = (selected) => {
+  const vote = {
+    first: animalPair[0],
+    second: animalPair[1],
+    selected,
+    attribute,
+  };
+  setVotes([...votes, vote]);
+  generateRandomPair();
+};
+
       });
       generateRandomPair();
     } catch (error) {
