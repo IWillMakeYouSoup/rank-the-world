@@ -1,0 +1,11 @@
+# Ignore node modules and environment files
+node_modules/
+**/node_modules/
+*.log
+.env
+backend/.env
+frontend/.expo
+frontend/web-build
+dist
+coverage
+expo-
