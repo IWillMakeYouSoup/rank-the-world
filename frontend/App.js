@@ -5,9 +5,9 @@ import Constants from 'expo-constants';
 const animals = ['Cat', 'Dog', 'Rabbit', 'Elephant', 'Lion', 'Tiger', 'Bear', 'Giraffe'];
 
 export default function App() {
-  cconst [animalPair, setAnimalPair] = useState([null, null]);
-const [attribute, setAttribute] = useState('cuteness');
-const [votes, setVotes] = useState([]);
+  const [animalPair, setAnimalPair] = useState([null, null]);
+  const [attribute, setAttribute] = useState('cuteness');
+  const [votes, setVotes] = useState([]);
 
   useEffect(() => {
     generateRandomPair();
@@ -23,21 +23,14 @@ const [votes, setVotes] = useState([]);
   };
 
   const submitVote = (selected) => {
-  const vote = {
-    first: animalPair[0],
-    second: animalPair[1],
-    selected,
-    attribute,
-  };
-  setVotes([...votes, vote]);
-  generateRandomPair();
-};
-
-      });
-      generateRandomPair();
-    } catch (error) {
-      console.error('Error submitting vote:', error);
-    }
+    const vote = {
+      first: animalPair[0],
+      second: animalPair[1],
+      selected,
+      attribute,
+    };
+    setVotes([...votes, vote]);
+    generateRandomPair();
   };
 
   return (
@@ -45,7 +38,7 @@ const [votes, setVotes] = useState([]);
       <Text style={styles.title}>Which has more {attribute}?</Text>
       <View style={styles.pair}>
         <Button title={animalPair[0] || ''} onPress={() => submitVote(animalPair[0])} />
-        <Text style={styles.vs}>VS</Text>
+        <Text style={styles.vs}>vs</Text>
         <Button title={animalPair[1] || ''} onPress={() => submitVote(animalPair[1])} />
       </View>
     </View>
